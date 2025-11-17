@@ -13,13 +13,18 @@ class ParticleSystem extends StatefulWidget {
   final bool autoStart;
   final VoidCallback? onComplete;
 
+  final dynamic position;
+
   const ParticleSystem({
-    Key? key,
+    super.key,
     required this.config,
     this.emissionPoint,
+    this.position = Offset.zero,
     this.autoStart = true,
     this.onComplete,
-  }) : super(key: key);
+  });
+
+
 
   @override
   State<ParticleSystem> createState() => _ParticleSystemState();
@@ -29,7 +34,7 @@ class _ParticleSystemState extends State<ParticleSystem>
     with SingleTickerProviderStateMixin {
   late Ticker _ticker;
   final List<Particle> _particles = [];
-  late ParticleEmitter? _emitter;
+  ParticleEmitter? _emitter;
   Duration _lastElapsed = Duration.zero;
   final List<ParticleBehavior> _behaviors = [];
   bool _initialized = false;
@@ -37,12 +42,23 @@ class _ParticleSystemState extends State<ParticleSystem>
   @override
   void initState() {
     super.initState();
+
+    _emitter = ParticleEmitter(
+      config: widget.config,
+      position: widget.position,
+    );
+
     _setupBehaviors();
+
     _ticker = createTicker(_onTick);
+
     if (widget.autoStart) {
       _ticker.start();
     }
   }
+
+
+
 
   void _setupBehaviors() {
     if (widget.config.gravity) {
@@ -72,13 +88,16 @@ class _ParticleSystemState extends State<ParticleSystem>
     final random = math.Random();
     for (int i = 0; i < widget.config.maxParticles; i++) {
       final speed = widget.config.minSpeed +
-          random.nextDouble() * (widget.config.maxSpeed - widget.config.minSpeed);
+          random.nextDouble() *
+              (widget.config.maxSpeed - widget.config.minSpeed);
 
       Color color;
       if (widget.config.rainbow) {
-        color = HSVColor.fromAHSV(1.0, random.nextDouble() * 360, 1.0, 1.0).toColor();
+        color = HSVColor.fromAHSV(1.0, random.nextDouble() * 360, 1.0, 1.0)
+            .toColor();
       } else {
-        color = widget.config.colors[random.nextInt(widget.config.colors.length)];
+        color =
+            widget.config.colors[random.nextInt(widget.config.colors.length)];
       }
 
       _particles.add(Particle(
@@ -92,7 +111,8 @@ class _ParticleSystemState extends State<ParticleSystem>
         ),
         color: color,
         size: widget.config.minSize +
-            random.nextDouble() * (widget.config.maxSize - widget.config.minSize),
+            random.nextDouble() *
+                (widget.config.maxSize - widget.config.minSize),
         life: widget.config.particleLifespan,
         shape: widget.config.shape,
       ));
@@ -113,7 +133,8 @@ class _ParticleSystemState extends State<ParticleSystem>
       if (widget.config.emissionRate > 0) {
         _emitter ??= ParticleEmitter(
           config: widget.config,
-          position: widget.emissionPoint ?? Offset(size.width / 2, size.height / 2),
+          position:
+              widget.emissionPoint ?? Offset(size.width / 2, size.height / 2),
         );
 
         // Emit new particles

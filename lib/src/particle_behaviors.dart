@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:math' as math;
 import 'particle.dart';
 
 abstract class ParticleBehavior {
@@ -53,14 +52,16 @@ class BounceBehavior extends ParticleBehavior {
   @override
   void apply(Particle particle, double dt, Size canvasSize) {
     if (particle.position.dx < 0 || particle.position.dx > canvasSize.width) {
-      particle.velocity = Offset(-particle.velocity.dx * damping, particle.velocity.dy);
+      particle.velocity =
+          Offset(-particle.velocity.dx * damping, particle.velocity.dy);
       particle.position = Offset(
         particle.position.dx.clamp(0, canvasSize.width),
         particle.position.dy,
       );
     }
     if (particle.position.dy < 0 || particle.position.dy > canvasSize.height) {
-      particle.velocity = Offset(particle.velocity.dx, -particle.velocity.dy * damping);
+      particle.velocity =
+          Offset(particle.velocity.dx, -particle.velocity.dy * damping);
       particle.position = Offset(
         particle.position.dx,
         particle.position.dy.clamp(0, canvasSize.height),

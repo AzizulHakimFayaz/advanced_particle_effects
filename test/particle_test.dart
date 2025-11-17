@@ -115,7 +115,8 @@ void main() {
   });
 
   group('NetworkedParticleSystem Widget Tests', () {
-    testWidgets('NetworkedParticleSystem should render', (WidgetTester tester) async {
+    testWidgets('NetworkedParticleSystem should render',
+        (WidgetTester tester) async {
       await tester.pumpWidget(
         const MaterialApp(
           home: Scaffold(
@@ -128,38 +129,38 @@ void main() {
     });
 
     testWidgets('NetworkedParticleSystem should accept custom parameters',
-            (WidgetTester tester) async {
-          await tester.pumpWidget(
-            const MaterialApp(
-              home: Scaffold(
-                body: NetworkedParticleSystem(
-                  particleCount: 150,
-                  particleSize: 3.0,
-                  particleColor: Colors.cyan,
-                ),
-              ),
+        (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const MaterialApp(
+          home: Scaffold(
+            body: NetworkedParticleSystem(
+              particleCount: 150,
+              particleSize: 3.0,
+              particleColor: Colors.cyan,
             ),
-          );
+          ),
+        ),
+      );
 
-          expect(find.byType(NetworkedParticleSystem), findsOneWidget);
-        });
+      expect(find.byType(NetworkedParticleSystem), findsOneWidget);
+    });
   });
 
   group('ParticleSystem Widget Tests', () {
     testWidgets('ParticleSystem should render with config',
-            (WidgetTester tester) async {
-          await tester.pumpWidget(
-            MaterialApp(
-              home: Scaffold(
-                body: ParticleSystem(
-                  config: ParticleConfig.fireworks,
-                ),
-              ),
+        (WidgetTester tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: ParticleSystem(
+              config: ParticleConfig.fireworks,
             ),
-          );
+          ),
+        ),
+      );
 
-          expect(find.byType(ParticleSystem), findsOneWidget);
-        });
+      expect(find.byType(ParticleSystem), findsOneWidget);
+    });
   });
 
   group('ParticleBehavior Tests', () {

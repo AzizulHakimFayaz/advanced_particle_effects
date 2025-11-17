@@ -1,8 +1,6 @@
 import 'package:advanced_particle_effects/src/particle_system.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'dart:math' as math;
-import 'particle.dart';
 import 'particle_configs.dart';
 
 /// NetworkedParticleSystem - Easy-to-use particle network with full customization
@@ -53,7 +51,7 @@ class NetworkedParticleSystem extends StatefulWidget {
   final bool bounce;
 
   const NetworkedParticleSystem({
-    Key? key,
+    super.key,
     this.particleCount = 100,
     this.particleSize = 2.0,
     this.particleColor = Colors.white,
@@ -63,10 +61,11 @@ class NetworkedParticleSystem extends StatefulWidget {
     this.speedMultiplier = 0.008,
     this.showConnections = true,
     this.bounce = true,
-  }) : super(key: key);
+  });
 
   @override
-  State<NetworkedParticleSystem> createState() => _NetworkedParticleSystemState();
+  State<NetworkedParticleSystem> createState() =>
+      _NetworkedParticleSystemState();
 }
 
 class _NetworkedParticleSystemState extends State<NetworkedParticleSystem>
@@ -83,11 +82,11 @@ class _NetworkedParticleSystemState extends State<NetworkedParticleSystem>
     // Initialize exactly like your code
     _positions = List.generate(
       widget.particleCount,
-          (_) => Offset(_random.nextDouble(), _random.nextDouble()),
+      (_) => Offset(_random.nextDouble(), _random.nextDouble()),
     );
     _velocities = List.generate(
       widget.particleCount,
-          (_) => Offset(
+      (_) => Offset(
         (_random.nextDouble() - 0.5) * widget.speedMultiplier,
         (_random.nextDouble() - 0.5) * widget.speedMultiplier,
       ),
@@ -96,7 +95,8 @@ class _NetworkedParticleSystemState extends State<NetworkedParticleSystem>
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 1000),
-    )..addListener(_updateParticles)
+    )
+      ..addListener(_updateParticles)
       ..repeat();
   }
 
@@ -180,7 +180,7 @@ class _NetworkedParticlePainter extends CustomPainter {
 
     // Draw connections first
     if (showConnections) {
-      final Color connectionColor = lineColor ?? particleColor;
+      final Color connectionColor = lineColor;
 
       for (int i = 0; i < screenPositions.length; i++) {
         for (int j = i + 1; j < screenPositions.length; j++) {
@@ -214,7 +214,7 @@ class _NetworkedParticlePainter extends CustomPainter {
 void main() => runApp(const ParticleEffectExample());
 
 class ParticleEffectExample extends StatefulWidget {
-  const ParticleEffectExample({Key? key}) : super(key: key);
+  const ParticleEffectExample({super.key});
 
   @override
   State<ParticleEffectExample> createState() => _ParticleEffectExampleState();
@@ -238,17 +238,17 @@ class _ParticleEffectExampleState extends State<ParticleEffectExample> {
   Widget _buildEffect(int index) {
     switch (index) {
       case 0:
-      // Default - white particles
+        // Default - white particles
         return const NetworkedParticleSystem();
       case 1:
-      // Custom colors
+        // Custom colors
         return const NetworkedParticleSystem(
           particleCount: 80,
           particleColor: Colors.cyan,
           lineColor: Colors.blue,
         );
       case 2:
-      // Big particles
+        // Big particles
         return const NetworkedParticleSystem(
           particleCount: 60,
           particleSize: 4.0,
@@ -256,7 +256,7 @@ class _ParticleEffectExampleState extends State<ParticleEffectExample> {
           particleColor: Colors.purple,
         );
       case 3:
-      // Dense network
+        // Dense network
         return const NetworkedParticleSystem(
           particleCount: 150,
           particleSize: 1.5,
@@ -264,7 +264,7 @@ class _ParticleEffectExampleState extends State<ParticleEffectExample> {
           particleColor: Colors.green,
         );
       case 4:
-      // Fast movement
+        // Fast movement
         return const NetworkedParticleSystem(
           particleCount: 100,
           speedMultiplier: 0.015,
@@ -331,8 +331,9 @@ class _ParticleEffectExampleState extends State<ParticleEffectExample> {
                       alignment: WrapAlignment.center,
                       children: List.generate(
                         _effectNames.length,
-                            (index) => ElevatedButton(
-                          onPressed: () => setState(() => _selectedEffect = index),
+                        (index) => ElevatedButton(
+                          onPressed: () =>
+                              setState(() => _selectedEffect = index),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: _selectedEffect == index
                                 ? Colors.blue

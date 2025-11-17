@@ -4,7 +4,7 @@ import 'package:advanced_particle_effects/advanced_particle_effects.dart';
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
 }
 
 class ParticleDemo extends StatefulWidget {
-  const ParticleDemo({Key? key}) : super(key: key);
+  const ParticleDemo({super.key});
 
   @override
   State<ParticleDemo> createState() => _ParticleDemoState();
@@ -51,7 +51,8 @@ class _ParticleDemoState extends State<ParticleDemo> {
         children: [
           // Particle effect
           NetworkedParticleSystem(
-            key: ValueKey('$particleCount-$particleSize-$lineWidth-$speed-$particleColor-$lineColor'),
+            key: ValueKey(
+                '$particleCount-$particleSize-$lineWidth-$speed-$particleColor-$lineColor'),
             particleCount: particleCount,
             particleSize: particleSize,
             particleColor: particleColor,
@@ -95,7 +96,7 @@ class _ParticleDemoState extends State<ParticleDemo> {
                       20,
                       200,
                       particleCount.toString(),
-                          (value) => setState(() => particleCount = value.toInt()),
+                      (value) => setState(() => particleCount = value.toInt()),
                     ),
 
                     // Particle Size
@@ -105,7 +106,7 @@ class _ParticleDemoState extends State<ParticleDemo> {
                       1.0,
                       8.0,
                       particleSize.toStringAsFixed(1),
-                          (value) => setState(() => particleSize = value),
+                      (value) => setState(() => particleSize = value),
                     ),
 
                     // Line Width
@@ -115,7 +116,7 @@ class _ParticleDemoState extends State<ParticleDemo> {
                       0.5,
                       4.0,
                       lineWidth.toStringAsFixed(1),
-                          (value) => setState(() => lineWidth = value),
+                      (value) => setState(() => lineWidth = value),
                     ),
 
                     // Speed
@@ -125,7 +126,7 @@ class _ParticleDemoState extends State<ParticleDemo> {
                       3,
                       20,
                       (speed * 1000).toStringAsFixed(1),
-                          (value) => setState(() => speed = value / 1000),
+                      (value) => setState(() => speed = value / 1000),
                     ),
 
                     const SizedBox(height: 16),
@@ -191,13 +192,13 @@ class _ParticleDemoState extends State<ParticleDemo> {
   }
 
   Widget _buildSlider(
-      String label,
-      double value,
-      double min,
-      double max,
-      String displayValue,
-      ValueChanged<double> onChanged,
-      ) {
+    String label,
+    double value,
+    double min,
+    double max,
+    String displayValue,
+    ValueChanged<double> onChanged,
+  ) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -251,12 +252,12 @@ class _ParticleDemoState extends State<ParticleDemo> {
               ),
               boxShadow: particleColor == particle
                   ? [
-                BoxShadow(
-                  color: particle.withOpacity(0.5),
-                  blurRadius: 8,
-                  spreadRadius: 2,
-                )
-              ]
+                      BoxShadow(
+                        color: particle.withOpacity(0.5),
+                        blurRadius: 8,
+                        spreadRadius: 2,
+                      )
+                    ]
                   : null,
             ),
           ),
@@ -287,14 +288,14 @@ class _ParticleDemoState extends State<ParticleDemo> {
         ),
         content: const Text(
           'Advanced Particle Effects Package\n\n'
-              'Features:\n'
-              '• Customizable particle count\n'
-              '• Adjustable particle size\n'
-              '• Custom colors\n'
-              '• Connection lines\n'
-              '• Speed control\n'
-              '• Bounce physics\n\n'
-              'Try adjusting the sliders and colors!',
+          'Features:\n'
+          '• Customizable particle count\n'
+          '• Adjustable particle size\n'
+          '• Custom colors\n'
+          '• Connection lines\n'
+          '• Speed control\n'
+          '• Bounce physics\n\n'
+          'Try adjusting the sliders and colors!',
           style: TextStyle(color: Colors.white70),
         ),
         actions: [

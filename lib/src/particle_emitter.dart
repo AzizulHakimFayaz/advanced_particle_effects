@@ -31,7 +31,7 @@ class ParticleEmitter {
   Particle _createParticle() {
     final angle = _random.nextDouble() * 2 * math.pi;
     final speed = (config.minSpeed +
-        _random.nextDouble() * (config.maxSpeed - config.minSpeed)) *
+            _random.nextDouble() * (config.maxSpeed - config.minSpeed)) *
         config.speedMultiplier; // NEW! Use speed multiplier
 
     Offset velocity;
@@ -69,8 +69,8 @@ class ParticleEmitter {
       size: size,
       life: config.particleLifespan,
       rotation: config.randomRotation ? _random.nextDouble() * 2 * math.pi : 0,
-      rotationSpeed: config.randomRotation ?
-      (_random.nextDouble() - 0.5) * 4 : 0,
+      rotationSpeed:
+          config.randomRotation ? (_random.nextDouble() - 0.5) * 4 : 0,
       shape: config.shape,
     );
   }

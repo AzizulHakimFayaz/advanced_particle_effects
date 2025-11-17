@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
-import 'dart:ui' as ui;
 import 'particle.dart';
 import 'particle_configs.dart';
 
@@ -32,7 +31,8 @@ class ParticlePainter extends CustomPainter {
     // EXACTLY YOUR ALGORITHM
     for (int i = 0; i < particles.length; i++) {
       for (int j = i + 1; j < particles.length; j++) {
-        final distance = (particles[i].position - particles[j].position).distance;
+        final distance =
+            (particles[i].position - particles[j].position).distance;
 
         if (distance < config.connectionDistance) {
           // Your fade calculation
@@ -131,14 +131,20 @@ class ParticlePainter extends CustomPainter {
     final path = Path();
     path.moveTo(0, size * 0.3);
     path.cubicTo(
-      -size, -size * 0.5,
-      -size * 0.5, -size,
-      0, -size * 0.3,
+      -size,
+      -size * 0.5,
+      -size * 0.5,
+      -size,
+      0,
+      -size * 0.3,
     );
     path.cubicTo(
-      size * 0.5, -size,
-      size, -size * 0.5,
-      0, size * 0.3,
+      size * 0.5,
+      -size,
+      size,
+      -size * 0.5,
+      0,
+      size * 0.3,
     );
     canvas.drawPath(path, paint);
   }
