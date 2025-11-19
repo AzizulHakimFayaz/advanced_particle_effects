@@ -54,11 +54,32 @@ class DynamicColoringExample extends StatelessWidget {
         body: SplitScreenParticleSystem(
           splitPosition: 0.5,
           splitAngle: 0.2, // Diagonal split
-          leftBackgroundColor: Color.fromARGB(255, 146, 42, 42),
-          rightBackgroundColor: Color.fromARGB(255, 211, 138, 138),
-          leftParticleColor: Color.fromARGB(255, 211, 138, 138),
-          rightParticleColor: Color.fromARGB(255, 146, 42, 42),
+          leftBackgroundColor: Colors.white,
+          rightBackgroundColor: Colors.black,
+          leftParticleColor: Colors.black,
+          rightParticleColor: Colors.white,
           particleCount: 150,
+          speedMultiplier: 0.005,
+        ),
+      ),
+    );
+  }
+}
+```
+
+---
+
+## 📸 Preview
+
+![Advanced Particle Effects Demo](example/Screen1.png)
+
+---
+
+## 🛠️ Customization
+
+### Basic Network Effect
+
+```dart
 NetworkedParticleSystem(
   particleCount: 100,
   particleSize: 2.0,
