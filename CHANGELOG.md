@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.1.1] - 2025-11-19
+
+### Fixed
+- **README Images**: Updated image paths to use absolute GitHub URLs so screenshots display correctly on pub.dev.
+
 ## [1.1.0] - 2025-11-19
 
 ### Added

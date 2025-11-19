@@ -63,6 +63,24 @@ class DynamicColoringExample extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+```
+
+---
+
+## 📸 Preview
+
+![Split Screen Effect](https://raw.githubusercontent.com/AzizulHakimFayaz/advanced_particle_effects/main/example/Screen1.png)
+
+![Network Particles](https://raw.githubusercontent.com/AzizulHakimFayaz/advanced_particle_effects/main/example/Screen2.png)
+
+![Bubbles Effect](https://raw.githubusercontent.com/AzizulHakimFayaz/advanced_particle_effects/main/example/Screen3.png)
+
+![Rain Effect](https://raw.githubusercontent.com/AzizulHakimFayaz/advanced_particle_effects/main/example/Screen4.png)
+
+---
+
 ## 🛠️ Customization
 
 ### Basic Network Effect
