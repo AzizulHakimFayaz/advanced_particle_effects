@@ -59,21 +59,6 @@ class DynamicColoringExample extends StatelessWidget {
           leftParticleColor: Color.fromARGB(255, 211, 138, 138),
           rightParticleColor: Color.fromARGB(255, 146, 42, 42),
           particleCount: 150,
-          speedMultiplier: 0.005,
-        ),
-      ),
-    );
-  }
-}
-```
-
----
-
-## 🛠️ Customization
-
-### Basic Network Effect
-
-```dart
 NetworkedParticleSystem(
   particleCount: 100,
   particleSize: 2.0,
