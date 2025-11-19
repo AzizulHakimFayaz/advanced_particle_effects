@@ -63,18 +63,6 @@ class DynamicColoringExample extends StatelessWidget {
         ),
       ),
     );
-  }
-}
-```
-
----
-
-## 📸 Preview
-
-![Advanced Particle Effects Demo](example/Screen1.png)
-
----
-
 ## 🛠️ Customization
 
 ### Basic Network Effect
