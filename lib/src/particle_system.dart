@@ -24,8 +24,6 @@ class ParticleSystem extends StatefulWidget {
     this.onComplete,
   });
 
-
-
   @override
   State<ParticleSystem> createState() => _ParticleSystemState();
 }
@@ -56,9 +54,6 @@ class _ParticleSystemState extends State<ParticleSystem>
       _ticker.start();
     }
   }
-
-
-
 
   void _setupBehaviors() {
     if (widget.config.gravity) {

@@ -73,7 +73,7 @@ void main() {
     });
 
     test('ParticleConfig.fireworks should have correct properties', () {
-      final config = ParticleConfig.fireworks;
+      final config = ParticleConfig.fireworks();
 
       expect(config.maxParticles, 200);
       expect(config.gravity, true);
@@ -82,7 +82,7 @@ void main() {
     });
 
     test('ParticleConfig.snow should have correct properties', () {
-      final config = ParticleConfig.snow;
+      final config = ParticleConfig.snow();
 
       expect(config.gravity, true);
       expect(config.wind, true);
@@ -153,7 +153,7 @@ void main() {
         MaterialApp(
           home: Scaffold(
             body: ParticleSystem(
-              config: ParticleConfig.fireworks,
+              config: ParticleConfig.fireworks(),
             ),
           ),
         ),
@@ -210,13 +210,13 @@ void main() {
   group('Integration Tests', () {
     test('Particle system should work with all presets', () {
       final presets = [
-        ParticleConfig.fireworks,
-        ParticleConfig.snow,
-        ParticleConfig.rain,
-        ParticleConfig.confetti,
-        ParticleConfig.bubbles,
+        ParticleConfig.fireworks(),
+        ParticleConfig.snow(),
+        ParticleConfig.rain(),
+        ParticleConfig.confetti(),
+        ParticleConfig.bubbles(),
         ParticleConfig.magic,
-        ParticleConfig.smoke,
+        ParticleConfig.smoke(),
         ParticleConfig.energyField,
         ParticleConfig.networkParticles,
         ParticleConfig.subtleNetwork,

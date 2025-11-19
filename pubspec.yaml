@@ -1,6 +1,6 @@
 name: advanced_particle_effects
 description: Easy-to-use particle effects for Flutter. Customizable particle count, size, colors, and connection lines. Works with zero configuration, smart defaults included.
-version: 1.0.1
+version: 1.1.0
 homepage: https://github.com/AzizulHakimFayaz/advanced_particle_effects
 repository: https://github.com/AzizulHakimFayaz/advanced_particle_effects
 issue_tracker: https://github.com/AzizulHakimFayaz/advanced_particle_effects/issues

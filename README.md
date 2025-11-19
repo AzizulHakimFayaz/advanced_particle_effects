@@ -1,231 +1,154 @@
-🎇 Advanced Particle Effects
+# 🎇 Advanced Particle Effects
 
-Beautiful, customizable, animated particle network effects for Flutter.
+[![Flutter](https://img.shields.io/badge/Flutter-3.0%2B-blue.svg)](https://flutter.dev)
+[![License](https://img.shields.io/badge/license-MIT-purple.svg)](LICENSE)
+[![Pub](https://img.shields.io/pub/v/advanced_particle_effects.svg)](https://pub.dev/packages/advanced_particle_effects)
 
-A lightweight and powerful Flutter widget to create mesmerizing particle networks with smooth animations and full customization options.
+**Beautiful, customizable, and performant particle network effects for Flutter.**
 
-🌟 Features
+Create mesmerizing backgrounds, interactive hero sections, and dynamic UI elements with just a few lines of code. Now featuring **Dynamic Coloring** and **Split Screen** effects!
 
-🚀 Plug & Play — works with just a single widget
+---
 
-🎨 Fully customizable (colors, size, speed, number of particles, distance, etc.)
+## ✨ Features
 
-⚡ Ultra-smooth animations
+- 🚀 **Plug & Play**: Works with a single widget.
+- 🎨 **Fully Customizable**: Control colors, size, speed, density, and more.
+- 🌈 **Dynamic Coloring**: Color particles based on their position (e.g., split screen).
+- ⚡ **High Performance**: Optimized custom painter implementation.
+- 🧩 **Rich Presets**: Includes Bubbles, Rain, Snow, Fire, Smoke, and more.
+- 🖱️ **Interactive**: Particles respond to touch and mouse movement.
+- 📱 **Cross-Platform**: Android, iOS, Web, Windows, macOS, Linux.
 
-🧩 Preset themes included
+---
 
-🖐 Interactive demo with live controls
-
-💻 Supports Android, iOS, Web, Windows, macOS, Linux
-
-🧪 Example app included
-
-🎯 Ideal for landing pages, app intros, hero backgrounds, login screens & more
-
-📦 Installation
-
-Add the package to your pubspec.yaml:
-
-dependencies:
-advanced_particle_effects: ^1.0.0
-
-
-Install:
-
-flutter pub get
-
-
-Import:
-
-import 'package:advanced_particle_effects/advanced_particle_effects.dart';
 ## 🚀 Quick Start
 
-Add the widget anywhere in your Flutter layout:
+Add the package to your `pubspec.yaml`:
+
+```yaml
+dependencies:
+  advanced_particle_effects: ^1.0.0
+```
+
+### Dynamic Split Screen Example
+
+Create a stunning split-screen effect where particles change color as they cross the boundary!
 
 ```dart
 import 'package:flutter/material.dart';
 import 'package:advanced_particle_effects/advanced_particle_effects.dart';
 
-void main() => runApp(const MyApp());
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Advanced Particle Effects Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark(),
-      home: const QuickStartDemo(),
-    );
-  }
+void main() {
+  runApp(const DynamicColoringExample());
 }
 
-class QuickStartDemo extends StatelessWidget {
-  const QuickStartDemo({super.key});
+class DynamicColoringExample extends StatelessWidget {
+  const DynamicColoringExample({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Colors.black,
-      body: NetworkedParticleSystem(
-        particleCount: 100,
-        particleSize: 2.0,
-        lineWidth: 1.2,
-        particleColor: Colors.white,
-        lineColor: Colors.white,
-        speedMultiplier: 0.008,
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        body: SplitScreenParticleSystem(
+          splitPosition: 0.5,
+          splitAngle: 0.2, // Diagonal split
+          leftBackgroundColor: Color.fromARGB(255, 146, 42, 42),
+          rightBackgroundColor: Color.fromARGB(255, 211, 138, 138),
+          leftParticleColor: Color.fromARGB(255, 211, 138, 138),
+          rightParticleColor: Color.fromARGB(255, 146, 42, 42),
+          particleCount: 150,
+          speedMultiplier: 0.005,
+        ),
       ),
     );
   }
 }
 ```
 
+---
 
+## 🛠️ Customization
 
+### Basic Network Effect
 
-NetworkedParticleSystem();
-
-
-That’s it! ✨
-
-🎛 Customization
-
-Here’s a fully customized example:
-```
+```dart
 NetworkedParticleSystem(
-particleCount: 120,
-particleSize: 3.0,
-particleColor: Colors.purple,
-lineColor: Colors.pink,
-lineWidth: 1.5,
-connectionDistance: 100,
-speedMultiplier: 0.01,
-);
+  particleCount: 100,
+  particleSize: 2.0,
+  particleColor: Colors.white,
+  lineColor: Colors.white,
+  speedMultiplier: 0.008,
+)
 ```
-📚 Examples (Included in Example App)
-1. Default – No Setup Needed
-   const NetworkedParticleSystem();
 
-2. Custom Particle Count
-   NetworkedParticleSystem(
-   particleCount: 150,
-   );
+### Using Presets
 
-3. Custom Particle Size
-   NetworkedParticleSystem(
-   particleSize: 5.0,
-   );
+The package comes with several beautiful presets that are now fully customizable:
 
-4. Custom Colors
-   NetworkedParticleSystem(
-   particleColor: Colors.cyan,
-   lineColor: Colors.blue,
-   );
+```dart
+// Custom Colored Bubbles
+ParticleSystem(
+  config: ParticleConfig.bubbles(
+    colors: [Colors.pink, Colors.purple],
+  ),
+)
 
-5. Thick Lines
-   NetworkedParticleSystem(
-   lineWidth: 2.5,
-   );
-
-6. Fully Customized
-   NetworkedParticleSystem(
-   particleCount: 120,
-   particleSize: 3.0,
-   particleColor: Colors.green,
-   lineColor: Colors.lightGreen,
-   lineWidth: 1.8,
-   connectionDistance: 90,
-   speedMultiplier: 0.01,
-   );
-
-7. Interactive Controls Demo
-
-A complete UI allowing live adjustments:
-
-Particle count
-
-Particle size
-
-Line width
-
-Speed
-
-Connection distance
-
-Color presets
-
-Example7_Interactive();
-
-8. Preset Themes
-
-Ready-made beautiful effects:
-
-Default
-
-Subtle
-
-Dense
-
-Big & Bold
-
-Fast
-
-Slow
-
-Cyan
-
-Purple
-
-Example8_Presets();
-
-🎨 Preset Theme List
+// Golden Rain
+ParticleSystem(
+  config: ParticleConfig.rain(
+    color: Colors.amber,
+    maxParticles: 2000,
+  ),
+)
 ```
-Name	Description
-Default	Standard white particles
-Subtle	Slow and light
-Dense	High particle count with tight links
-Big & Bold	Large particles and thick lines
-Fast	Increased speed
-Slow	Very slow animation
-Cyan	Cool neon cyan theme
-Purple	Neon purple/pink theme
-⚙️ API Reference
-Property	Type	Default	Description
-particleCount	int	100	Number of particles
-particleSize	double	2.0	Size of particles
-particleColor	Color	Colors.white	Particle color
-lineColor	Color?	same as particleColor	Color of connecting lines
-lineWidth	double	1.2	Thickness of lines
-connectionDistance	double	80	Max distance for connecting lines
-speedMultiplier	double	0.008	Movement speed
-showConnections	bool	true	Whether lines are drawn
-bounce	bool	true	Particles bounce inside boundaries
-```
-🧪 Example App
 
-The package includes a full example project showing:
- demo screens
+**Available Presets:**
+- `Network Particles` (Default)
+- `Bubbles`
+- `Rain`
+- `Snow`
+- `Fireworks`
+- `Smoke`
+- `Confetti`
+- `Magic Glow`
+- `Energy Field`
 
-Interactive settings panel
+---
 
-All customization options
+## ⚙️ API Reference
 
-Preset themes
+### `NetworkedParticleSystem`
 
-Run the example:
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `particleCount` | `int` | `100` | Number of particles |
+| `particleSize` | `double` | `2.0` | Size of particles |
+| `particleColor` | `Color` | `Colors.white` | Base particle color |
+| `lineColor` | `Color?` | `particleColor` | Color of connecting lines |
+| `lineWidth` | `double` | `1.2` | Thickness of lines |
+| `connectionDistance` | `double` | `80` | Max distance for connecting lines |
+| `speedMultiplier` | `double` | `0.008` | Movement speed |
+| `particleColorBuilder` | `Function` | `null` | Dynamic color based on position |
 
-flutter run example/lib/main.dart
+### `SplitScreenParticleSystem`
 
-📸 Screenshots / Preview
-![Screenshot](example/screen1.png)
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `splitPosition` | `double` | `0.5` | Horizontal split position (0.0 - 1.0) |
+| `splitAngle` | `double` | `0.0` | Angle of the split in radians |
+| `leftBackgroundColor` | `Color` | `Colors.black` | Background color of left side |
+| `rightBackgroundColor` | `Color` | `Colors.white` | Background color of right side |
+| `leftParticleColor` | `Color` | `Colors.white` | Particle color on left side |
+| `rightParticleColor` | `Color` | `Colors.black` | Particle color on right side |
 
-🤝 Contributing
+---
 
-Contributions are welcome!
-Feel free to open a PR or file an issue.
+## 🤝 Contributing
 
-⭐ Support
+Contributions are welcome! Feel free to open a PR or file an issue.
 
-If you like this package, please give it a ⭐ on pub.dev or GitHub — it helps a lot!
+## ⭐ Support
+
+If you find this package useful, please give it a ⭐ on pub.dev and GitHub!

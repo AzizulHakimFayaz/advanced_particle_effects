@@ -41,7 +41,8 @@ class ParticlePainter extends CustomPainter {
               particles[j].opacity *
               0.5; // Your opacity multiplier
 
-          linePaint.color = particles[i].color.withOpacity(opacity);
+          linePaint.color = particles[i].color.withValues(alpha: opacity);
+
           canvas.drawLine(
             particles[i].position,
             particles[j].position,
@@ -54,8 +55,8 @@ class ParticlePainter extends CustomPainter {
 
   void _drawParticle(Canvas canvas, Particle particle) {
     final paint = Paint()
-      ..color = particle.color.withOpacity(
-        config.fadeOut ? particle.opacity : 1.0,
+      ..color = particle.color.withValues(
+        alpha: config.fadeOut ? particle.opacity : 1.0,
       )
       ..blendMode = config.blendMode;
 
